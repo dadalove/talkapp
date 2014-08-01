@@ -1,0 +1,6 @@
+zh-TW:
+  hello: "你好 %{name}"
+  activerecord:
+    attributes:                       
+      comment:
+        content: "使用者留言內容"

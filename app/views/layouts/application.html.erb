@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Talkapp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= link_to "Talk App Home", root_path %>
+
+<% if user_signed_in? %>                                                       <!-- 判斷是否為登入或登出？ -->
+<%= t(:hello,:name=>current_user.name )%>                                      <!-- hello某某人 -->
+<%= link_to "edit account", edit_user_registration_path %>                     <!-- 使用者註冊資料修改的按鈕和路徑 -->
+<%= link_to "logout", destroy_user_session_path, method:'delete' %>            <!-- 登入狀態時顯示登出按鈕 -->
+<%else%>                                                                       <!-- 不是登入狀態 -->
+<%= link_to "login", new_user_session_path %>                                  <!-- 登出狀態時顯示登入按鈕 -->
+<%end%>
+
+<div>
+  <div><%= notice %></div>
+</div>
+<%= yield %>
+
+</body>
+</html>

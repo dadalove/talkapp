@@ -1,0 +1,17 @@
+<h2>留言內容</h2>
+
+<ul>
+ <% @comments.each do |comment| %>
+  <li>
+   <%= comment.content %>
+   <%= link_to  comment.user.email, user_comments_path(comment.user) %>
+   <%= link_to "show", comment_path(comment) %>
+   <% if current_user==comment.user %>                                   <!-- 假如登入的使用者是留言的的人就顯示delete按鈕 -->
+   <%= link_to "delete", comment_path(comment),method: :delete, data: {confirm: 'are you sure?'} %> 
+   <% end %>
+  </li>
+ <% end %>
+</ul>
+
+
+<%= link_to "new comment", new_comment_path %>
